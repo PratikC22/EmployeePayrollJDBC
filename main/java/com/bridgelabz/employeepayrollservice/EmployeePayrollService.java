@@ -10,7 +10,7 @@ public class EmployeePayrollService {
     }
 
     private List<EmployeePayrollData> employeePayrollDataList;
-    EmployeePayrollDBService employeePayrollDBService = new EmployeePayrollDBService();
+    EmployeePayrollDBService employeePayrollDBService = EmployeePayrollDBService.getInstance();
 
     public EmployeePayrollService(List<EmployeePayrollData> employeePayrollDataList) {
         this.employeePayrollDataList = employeePayrollDataList;
