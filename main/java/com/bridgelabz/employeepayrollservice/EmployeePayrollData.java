@@ -6,19 +6,19 @@ import java.util.Objects;
 public class EmployeePayrollData {
     public int id;
     public String name;
-    public double basic_Pay;
+    public double salary;
     public LocalDate start;
 
-    public EmployeePayrollData(int id, String name, double basic_pay, LocalDate startDate) {
+    public EmployeePayrollData(int id, String name, double salary, LocalDate startDate) {
         this.id = id;
         this.name = name;
-        this.basic_Pay = basic_pay;
+        this.salary = salary;
         this.start = startDate;
     }
 
     @Override
     public String toString() {
-        return "EmployeePayrollData{" + "id=" + id + ", name='" + name + '\'' + ", salary=" + basic_Pay + ", startDate="
+        return "EmployeePayrollData{" + "id=" + id + ", name='" + name + '\'' + ", salary=" + salary + ", startDate="
                + start + '}';
     }
 
@@ -29,6 +29,6 @@ public class EmployeePayrollData {
         if (o == null || getClass() != o.getClass())
             return false;
         EmployeePayrollData that = (EmployeePayrollData) o;
-        return id == that.id && Double.compare(that.basic_Pay, basic_Pay) == 0 && Objects.equals(name, that.name);
+        return id == that.id && Double.compare(that.salary, salary) == 0 && Objects.equals(name, that.name);
     }
 }
