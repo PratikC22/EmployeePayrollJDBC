@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeePayrollService {
+
     public enum IOService {
         DB_IO
     }
@@ -16,7 +17,7 @@ public class EmployeePayrollService {
     }
 
     public EmployeePayrollService() {
-        this.employeePayrollDataList = new ArrayList<EmployeePayrollData>();
+        this.employeePayrollDataList = new ArrayList<>();
     }
 
     public List<EmployeePayrollData> readEmployeePayrollData(IOService ioService) {
@@ -36,6 +37,15 @@ public class EmployeePayrollService {
 
     public void updateEmployeeSalary(String name, double salary) {
         int result = employeePayrollDBService.updateEmployeeData(name, salary);
+        if (result == 0)
+            return;
+        EmployeePayrollData employeePayrollData = this.getEmployeePayrollData(name);
+        if (employeePayrollData != null)
+            employeePayrollData.salary = salary;
+    }
+
+    public void updateEmployeeSalaryUsingPreparedStatement(String name, double salary) {
+        int result = employeePayrollDBService.updateEmployeeDataUsingStatement(name, salary);
         if (result == 0)
             return;
         EmployeePayrollData employeePayrollData = this.getEmployeePayrollData(name);
